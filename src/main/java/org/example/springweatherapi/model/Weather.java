@@ -4,9 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import java.util.Objects;
 @Entity
 public class Weather {
     @Id
@@ -15,15 +13,16 @@ public class Weather {
     private  Long id;
     private String country;
     private String city;
-    private String temperature;
-    private String condition;
+    private String temperature_degree;
+    private String condition_weather;
 
-    public Weather(String country, String city, String temperature, String condition) {
-        this.country = country;
+    public Weather(String country_name, String city, String temperature_degree, String condition_weather) {
+        this.country = country_name;
         this.city = city;
-        this.temperature = temperature;
-        this.condition = condition;
+        this.temperature_degree = temperature_degree;
+        this.condition_weather = condition_weather;
     }
+
 
     public Weather() {
 
@@ -53,19 +52,19 @@ public class Weather {
         this.city = city;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public String getTemperature_degree() {
+        return temperature_degree;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setTemperature_degree(String temperature) {
+        this.temperature_degree = temperature;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getCondition_weather() {
+        return condition_weather;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setCondition_weather(String condition) {
+        this.condition_weather = condition;
     }
 }

@@ -5,30 +5,32 @@ import org.example.springweatherapi.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-    @RestController
-    @RequestMapping(path="/weather")
+@RestController
+    @RequestMapping(path="/api")
     public class WeatherController {
 
         @Autowired
-        private final WeatherService weatherService;
+        private final WeatherService service;
 
-        public WeatherController(WeatherService weatherService) {
-            this.weatherService = weatherService;
+        public WeatherController(WeatherService service) {
+            this.service = service;
         }
 
-        @GetMapping("/country/cities")
+        @GetMapping("/{country}/cities")
         public Iterable<Weather> getCitiesInCountry(@PathVariable String country) {
-            return weatherService.getCitiesInCountry(country);
+            return service.getCitiesInCountry(country);
         }
 
         @GetMapping("/weather/{city}")
         public Iterable<Weather> getWeatherByCityId(@PathVariable String city) {
-            return weatherService.getWeatherByCityId(city);
+            return service.getWeatherByCityId(city);
+        }
+        @PostMapping()
+        public Weather postWeather(@RequestBody Weather weather) {
+        return service.createWeather(weather);
         }
         @PostMapping("/seed")
-        public boolean postSeedWeather(){
-            return weatherService.seed();
+        public Iterable postSeedWeather(){
+            return service.seed();
         }
     }

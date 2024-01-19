@@ -1,7 +1,18 @@
 package org.example.springweatherapi.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.Objects;
+@Entity
 public class Weather {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private  Long id;
     private String country;
     private String city;
     private String temperature;
@@ -12,6 +23,18 @@ public class Weather {
         this.city = city;
         this.temperature = temperature;
         this.condition = condition;
+    }
+
+    public Weather() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCountry() {
@@ -44,28 +67,5 @@ public class Weather {
 
     public void setCondition(String condition) {
         this.condition = condition;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Weather weather = (Weather) o;
-        return Objects.equals(country, weather.country) && Objects.equals(city, weather.city) && Objects.equals(temperature, weather.temperature) && Objects.equals(condition, weather.condition);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(country, city, temperature, condition);
-    }
-
-    @Override
-    public String toString() {
-        return "Weather{" +
-                "country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", condition='" + condition + '\'' +
-                '}';
     }
 }

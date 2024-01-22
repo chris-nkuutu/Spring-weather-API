@@ -1,6 +1,5 @@
 package org.example.springweatherapi.service;
 
-import jakarta.persistence.Id;
 import org.example.springweatherapi.model.Weather;
 import org.example.springweatherapi.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +13,12 @@ public class WeatherService {
     @Autowired
     private WeatherRepository repository;
 
-    public Iterable<Weather> getCitiesInCountry(String country) {
-        return repository.findByCountryName(country);
+    public Iterable<Weather> getCitiesInCountry(String country_name) {
+        return repository.findByCountry(country_name);
     }
 
     public Iterable<Weather> getWeatherByCityId(String city) {
-        return repository.findByCityName(city);
+        return repository.findByCity(city);
     }
     public Weather createWeather(Weather weather){
         return repository.save(weather);
@@ -54,6 +53,10 @@ public class WeatherService {
 
     public Weather updateWeatherById(long id, Weather weather) {
         return weather;
+    }
+
+    public Iterable<Weather> getWeatherList() {
+        return repository.findAll();
     }
 }
 

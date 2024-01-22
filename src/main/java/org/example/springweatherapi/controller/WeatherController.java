@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-    @RequestMapping(path="/api")
+    @RequestMapping(path="/api/weather")
     public class WeatherController {
 
         @Autowired
@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.*;
         public WeatherController(WeatherService service) {
             this.service = service;
         }
-
-        @GetMapping("/{country}/cities")
-        public Iterable<Weather> getCitiesInCountry(@PathVariable String country) {
-            return service.getCitiesInCountry(country);
+        @GetMapping
+        public Iterable<Weather> getAllWeather(){
+            return service.getWeatherList();
         }
 
-        @GetMapping("/weather/{city}")
+        @GetMapping(path = "/country_name/cities")
+        public Iterable<Weather> getCitiesInCountry(@PathVariable String country_name) {
+            return service.getCitiesInCountry(country_name);
+        }
+
+        @GetMapping("/weather/city")
         public Iterable<Weather> getWeatherByCityId(@PathVariable String city) {
             return service.getWeatherByCityId(city);
         }

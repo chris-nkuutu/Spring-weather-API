@@ -9,8 +9,7 @@ public interface WeatherRepository extends CrudRepository<Weather,Long> {
     Iterable<Weather> findById(Serializable id);
 
     public void save(Iterable<Weather> weatherList);
-
-    Iterable<Weather> findByCountryName(String country);
-
-    Iterable<Weather> findByCityName(String city);
+    Iterable<Weather> findByCity(String city);
+    Iterable<Weather> findByCountry(String countryName);
 }
+

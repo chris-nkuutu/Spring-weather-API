@@ -16,8 +16,8 @@ public class Weather {
     private String temperature_degree;
     private String condition_weather;
 
-    public Weather(String country_name, String city, String temperature_degree, String condition_weather) {
-        this.country = country_name;
+    public Weather(String country, String city, String temperature_degree, String condition_weather) {
+        this.country = country;
         this.city = city;
         this.temperature_degree = temperature_degree;
         this.condition_weather = condition_weather;

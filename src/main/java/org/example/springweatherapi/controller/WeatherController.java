@@ -28,7 +28,12 @@ import org.springframework.web.bind.annotation.*;
         @PostMapping()
         public Weather postWeather(@RequestBody Weather weather) {
         return service.createWeather(weather);
+
         }
+        @PutMapping("/{id}")
+        public Weather putWeather(@PathVariable long id,@RequestBody Weather weather){
+         return service.updateWeatherById(id,weather);
+    }
         @PostMapping("/seed")
         public Iterable postSeedWeather(){
             return service.seed();

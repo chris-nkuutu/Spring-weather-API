@@ -1,5 +1,6 @@
 package org.example.springweatherapi.service;
 
+import org.example.springweatherapi.exception.WeatherNotFoundException;
 import org.example.springweatherapi.model.Weather;
 import org.example.springweatherapi.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,11 @@ public class WeatherService {
     private WeatherRepository repository;
 
     public Iterable<Weather> getCitiesInCountry(String country) {
-        return repository.findById(country);
+        return repository.findByCountryName(country);
     }
 
     public Iterable<Weather> getWeatherByCityId(String city) {
-        return repository.findById(city);
+        return repository.findByCityName(city);
     }
     public Weather createWeather(Weather weather){
         return repository.save(weather);
@@ -46,8 +47,13 @@ public class WeatherService {
 
         }
 
+
     public Object getCitiesInCountry() {
-        return getCitiesInCountry("");
+        return getCitiesInCountry();
+    }
+
+    public Weather updateWeatherById(long id, Weather weather) {
+        return weather;
     }
 }
 

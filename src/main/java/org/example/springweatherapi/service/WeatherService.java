@@ -1,6 +1,6 @@
 package org.example.springweatherapi.service;
 
-import org.example.springweatherapi.exception.WeatherNotFoundException;
+import jakarta.persistence.Id;
 import org.example.springweatherapi.model.Weather;
 import org.example.springweatherapi.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;

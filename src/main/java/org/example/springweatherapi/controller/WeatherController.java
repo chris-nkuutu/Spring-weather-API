@@ -20,14 +20,14 @@ import org.springframework.web.bind.annotation.*;
             return service.getWeatherList();
         }
 
-        @GetMapping(path = "/country_name/cities")
+        @GetMapping(path = "/{country_name}/cities")
         public Iterable<Weather> getCitiesInCountry(@PathVariable String country_name) {
             return service.getCitiesInCountry(country_name);
         }
 
-        @GetMapping("/weather/city")
-        public Iterable<Weather> getWeatherByCityId(@PathVariable String city) {
-            return service.getWeatherByCityId(city);
+        @GetMapping("/weather/{cityId}")
+        public Iterable<Weather> getWeatherByCityId(@PathVariable Long cityId) {
+            return service.getWeatherByCityId(String.valueOf(cityId));
         }
         @PostMapping()
         public Weather postWeather(@RequestBody Weather weather) {

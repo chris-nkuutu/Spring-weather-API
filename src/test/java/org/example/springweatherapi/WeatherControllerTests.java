@@ -27,10 +27,10 @@ public class WeatherControllerTests {
     private MockMvc mockMvc;
 
     @Test
-     void getCitiesInCountry_ShouldReturnListOfCitiesInCountry() throws Exception {
+     public void getAllWeatherList_ShouldReturnListOfAllWeatherList() throws Exception {
 
 
-        when(service.getCitiesInCountry()).thenReturn(getMockWeather());
+        when(service.getWeatherList()).thenReturn(getMockWeather());
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/weather"))
                 .andExpect(status().isOk())

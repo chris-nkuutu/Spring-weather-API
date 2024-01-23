@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.*;
         }
 
         @GetMapping("/weather/{cityId}")
-        public Iterable<Weather> getWeatherByCityId(@PathVariable Long cityId) {
-            return service.getWeatherByCityId(String.valueOf(cityId));
+        public Iterable<Weather> getWeatherByCityId(@PathVariable String cityId) {
+            return service.getWeatherByCityId(cityId);
+
+                    //getWeatherByCityId(String.valueOf(cityId));
         }
         @PostMapping()
         public Weather postWeather(@RequestBody Weather weather) {

@@ -52,7 +52,7 @@ public class WeatherService {
     }
 
     public Weather updateWeatherById(long id, Weather weather) {
-        return weather;
+        return repository.save(weather);
     }
 
     public Iterable<Weather> getWeatherList() {
